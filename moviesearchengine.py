@@ -1,16 +1,22 @@
 import requests
 import json
 import streamlit as st
-
+import pandas as pd
  
 st.title('Movie Engine')
 user = st.text_input('Movie Title')
 
+genre = st.text_input('Genre', caption = 'hello')
+st.caption('Kindly enter your desired genre to recommend movies')
+ 
 url = f'http://www.omdbapi.com/?apikey=aad18307&t={user}'
 
 
 r = requests.get(url)
 json_data = r.json() # The Json Data
+
+movie = pd.read_csv(r'C:\Users\jto07\OneDrive\Desktop\HOOK\hook\Movie-engine\movie_dataset.csv')
+
 
 
 if user == '':
@@ -36,7 +42,14 @@ else:
     st.write('Actors : ' + json_data['Actors'])
     #for key, value in json_data.items():
         #st.write(key,' : ',value)
- 
+
+if genre == '':
+    st.write('')
+else:
+    genre =genre[0].upper()+genre[1:]
+    gen = movie[movie['genres'] == genre]
+    gen = gen[['title']]
+    st.write(gen.head(10))
 
 
 
