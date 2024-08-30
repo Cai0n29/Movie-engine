@@ -6,7 +6,7 @@ import pandas as pd
 st.title('Movie Engine')
 user = st.text_input('Movie Title')
 
-genre = st.text_input('Genre', caption = 'hello')
+genre = st.text_input('Genre')
 st.caption('Kindly enter your desired genre to recommend movies')
  
 url = f'http://www.omdbapi.com/?apikey=aad18307&t={user}'
