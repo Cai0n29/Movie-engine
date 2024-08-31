@@ -15,7 +15,7 @@ url = f'http://www.omdbapi.com/?apikey=aad18307&t={user}'
 r = requests.get(url)
 json_data = r.json() # The Json Data
 
-movie = pd.read_csv(r'C:\Users\jto07\OneDrive\Desktop\HOOK\hook\Movie-engine\movie_dataset.csv')
+movie = pd.read_csv('movie_dataset.csv')
 
 
 
